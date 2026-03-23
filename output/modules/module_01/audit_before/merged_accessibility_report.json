@@ -1,0 +1,82 @@
+{
+  "summary": {
+    "tools_received": {
+      "axe": true,
+      "lighthouse": true,
+      "pa11y": true
+    },
+    "total_merged_issues": 3,
+    "by_severity": {
+      "critical": 0,
+      "serious": 2,
+      "moderate": 1,
+      "minor": 0,
+      "unknown": 0
+    }
+  },
+  "merged_issues": [
+    {
+      "issue_id": "a11y-document-title-missing-html",
+      "title": "Missing or empty document title",
+      "description": "The page does not contain a non-empty <title> element. Screen reader users rely on the title to understand what the page is, and it is also important for navigation and search results.",
+      "severity": "serious",
+      "selectors": [
+        "html",
+        "html > head"
+      ],
+      "wcag": [
+        "WCAG 2.4.2"
+      ],
+      "source_tools": [
+        "axe",
+        "lighthouse",
+        "pa11y"
+      ],
+      "source_rule_ids": [
+        "document-title",
+        "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl"
+      ],
+      "recommended_fix": "Add a descriptive, non-empty <title> element inside <head>, e.g. <title>Page name – Site name</title>, and ensure it is unique per page."
+    },
+    {
+      "issue_id": "a11y-aria-prohibited-attr-menu-btn",
+      "title": "Prohibited ARIA attribute used on element without a valid role",
+      "description": "A <div> with no valid role uses aria-label. This is flagged as a prohibited ARIA attribute usage for the element/role combination, which can prevent assistive technologies from correctly interpreting the control.",
+      "severity": "serious",
+      "selectors": [
+        ".menu-btn",
+        "body > div.uist-wrap > div.topbar > div.menu-btn"
+      ],
+      "wcag": [
+        "WCAG 4.1.2"
+      ],
+      "source_tools": [
+        "axe",
+        "lighthouse"
+      ],
+      "source_rule_ids": [
+        "aria-prohibited-attr"
+      ],
+      "recommended_fix": "Use a semantic control (preferred) such as <button class=\"menu-btn\" aria-label=\"Menu\">…</button>. If a non-semantic element must be used, add an appropriate role (e.g., role=\"button\"), ensure it is keyboard operable (Enter/Space), and provide an accessible name."
+    },
+    {
+      "issue_id": "a11y-bypass-incomplete-html",
+      "title": "Bypass mechanism / landmarks / heading not detected (needs review)",
+      "description": "Automated checks could not confirm a mechanism to bypass repeated content (e.g., skip link), and also indicate missing heading and landmark regions. This may be a real issue or require manual verification depending on page structure and dynamic rendering.",
+      "severity": "moderate",
+      "selectors": [
+        "html"
+      ],
+      "wcag": [
+        "WCAG 2.4.1"
+      ],
+      "source_tools": [
+        "axe"
+      ],
+      "source_rule_ids": [
+        "bypass"
+      ],
+      "recommended_fix": "Add a visible-on-focus skip link (e.g., <a href=\"#main\" class=\"skip-link\">Skip to main content</a>) and ensure the main content has an id (e.g., <main id=\"main\">). Also ensure the page has a meaningful heading structure (e.g., an <h1>) and uses landmarks (<header>, <nav>, <main>, <footer> or equivalent ARIA landmarks)."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "tools_received": {
+      "axe": true,
+      "lighthouse": true,
+      "pa11y": true
+    },
+    "total_merged_issues": 2,
+    "by_severity": {
+      "critical": 0,
+      "serious": 1,
+      "moderate": 1,
+      "minor": 0,
+      "unknown": 0
+    }
+  },
+  "merged_issues": [
+    {
+      "issue_id": "a11y-document-title-missing__html",
+      "title": "Missing or empty document title",
+      "description": "The page does not have a non-empty <title> element. A descriptive document title helps screen reader users understand the page context and improves navigation (and is also important for browser tabs and search results).",
+      "severity": "serious",
+      "selectors": [
+        "html",
+        "html > head"
+      ],
+      "wcag": [
+        "WCAG 2.4.2"
+      ],
+      "source_tools": [
+        "axe",
+        "lighthouse",
+        "pa11y"
+      ],
+      "source_rule_ids": [
+        "axe:document-title",
+        "lighthouse:document-title",
+        "pa11y:WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl"
+      ],
+      "recommended_fix": "Add a meaningful, non-empty <title> in the document <head>, e.g. <title>Page name – Site name</title>, and ensure it is unique and descriptive for each page."
+    },
+    {
+      "issue_id": "a11y-landmark-one-main-missing__html",
+      "title": "Missing main landmark",
+      "description": "The document does not include a main landmark, which makes it harder for assistive technology users to quickly navigate to the primary content area.",
+      "severity": "moderate",
+      "selectors": [
+        "html"
+      ],
+      "wcag": [],
+      "source_tools": [
+        "lighthouse"
+      ],
+      "source_rule_ids": [
+        "lighthouse:landmark-one-main"
+      ],
+      "recommended_fix": "Wrap the primary page content in a single <main> element (or an element with role=\"main\"), ensure there is only one main landmark per page, and avoid placing it inside repeated content like headers/sidebars."
+    }
+  ]
+}

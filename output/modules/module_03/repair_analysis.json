@@ -1,0 +1,27 @@
+{
+  "input_html": "output/modules/module_03/module_original.html",
+  "input_report": "output/modules/module_03/audit_before/merged_accessibility_report.json",
+  "report_type": "unknown",
+  "output_html": "output/modules/module_03/module_repaired.html",
+  "analysis": {
+    "violation_count": 2,
+    "key_issues": [
+      "Missing/empty <title> element in <head> (WCAG 2.4.2)",
+      "No main landmark (<main> or role=\"main\") for primary content"
+    ],
+    "fix_strategy": [
+      "Add a descriptive, non-empty <title> in the document <head>",
+      "Wrap the primary content area in a single semantic <main> element while preserving existing layout and classes"
+    ]
+  },
+  "changes": [
+    {
+      "issue_id": "a11y-document-title-missing__html",
+      "what_changed": "Added a descriptive <title> element: \"UIST — Program Overview\"."
+    },
+    {
+      "issue_id": "a11y-landmark-one-main-missing__html",
+      "what_changed": "Wrapped the page’s primary content in a single <main> landmark (kept existing structure and classes)."
+    }
+  ]
+}

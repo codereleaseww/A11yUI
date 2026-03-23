@@ -1,0 +1,115 @@
+{
+  "aria-prohibited-attr": {
+    "id": "aria-prohibited-attr",
+    "title": "Elements use prohibited ARIA attributes",
+    "description": "Using ARIA attributes in roles where they are prohibited can mean that important information is not communicated to users of assistive technologies. [Learn more about prohibited ARIA roles](https://dequeuniversity.com/rules/axe/4.11/aria-prohibited-attr).",
+    "score": 0,
+    "scoreDisplayMode": "binary",
+    "details": {
+      "type": "table",
+      "headings": [
+        {
+          "key": "node",
+          "valueType": "node",
+          "subItemsHeading": {
+            "key": "relatedNode",
+            "valueType": "node"
+          },
+          "label": "Failing Elements"
+        }
+      ],
+      "items": [
+        {
+          "node": {
+            "type": "node",
+            "lhId": "1-0-DIV",
+            "path": "1,HTML,1,BODY,0,DIV,0,DIV,0,DIV",
+            "selector": "body > div.uist-wrap > div.topbar > div.menu-btn",
+            "boundingRect": {
+              "top": 18,
+              "bottom": 72,
+              "left": 300,
+              "right": 378,
+              "width": 78,
+              "height": 54
+            },
+            "snippet": "<div class=\"menu-btn\" aria-label=\"Menu\">",
+            "nodeLabel": "Menu",
+            "explanation": "Fix all of the following:\n  aria-label attribute cannot be used on a div with no valid role attribute."
+          }
+        }
+      ],
+      "debugData": {
+        "type": "debugdata",
+        "impact": "serious",
+        "tags": [
+          "cat.aria",
+          "wcag2a",
+          "wcag412",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "RGAAv4",
+          "RGAA-7.1.1"
+        ]
+      }
+    }
+  },
+  "document-title": {
+    "id": "document-title",
+    "title": "Document doesn't have a `<title>` element",
+    "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more about document titles](https://dequeuniversity.com/rules/axe/4.11/document-title).",
+    "score": 0,
+    "scoreDisplayMode": "binary",
+    "details": {
+      "type": "table",
+      "headings": [
+        {
+          "key": "node",
+          "valueType": "node",
+          "subItemsHeading": {
+            "key": "relatedNode",
+            "valueType": "node"
+          },
+          "label": "Failing Elements"
+        }
+      ],
+      "items": [
+        {
+          "node": {
+            "type": "node",
+            "lhId": "1-1-HTML",
+            "path": "1,HTML",
+            "selector": "html",
+            "boundingRect": {
+              "top": 0,
+              "bottom": 1093,
+              "left": 0,
+              "right": 412,
+              "width": 412,
+              "height": 1093
+            },
+            "snippet": "<html lang=\"en\">",
+            "nodeLabel": "html",
+            "explanation": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+          }
+        }
+      ],
+      "debugData": {
+        "type": "debugdata",
+        "impact": "serious",
+        "tags": [
+          "cat.text-alternatives",
+          "wcag2a",
+          "wcag242",
+          "TTv5",
+          "TT12.a",
+          "EN-301-549",
+          "EN-9.2.4.2",
+          "ACT",
+          "RGAAv4",
+          "RGAA-8.5.1"
+        ]
+      }
+    }
+  }
+}

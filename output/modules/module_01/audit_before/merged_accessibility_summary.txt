@@ -1,0 +1,1 @@
+Merged issues: 3\nOutput: output/modules/module_01/audit_before/merged_accessibility_report.json\n

@@ -1,0 +1,7 @@
+Violations: 1
+Incomplete: 1
+
+Top violations:
+1. document-title | impact=serious | nodes=1
+   Documents must have <title> element to aid in navigation
+   https://dequeuniversity.com/rules/axe/4.10/document-title?application=axeAPI

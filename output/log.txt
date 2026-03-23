@@ -1,0 +1,8 @@
+[2026-03-23 12:06:16,320 - main.py, line:169] - INFO: Args: Namespace(image='test.png', out_dir='output', backbone='openai', max_blocks=25, temperature=0.0, audit_tool='all', ruleset='wcag2a', timeout_ms=60000, audit_merge_temperature=0.0)
+[2026-03-23 12:06:16,320 - main.py, line:181] - INFO: Step 1/6: Split screenshot into modules
+[2026-03-23 12:06:24,712 - main.py, line:186] - INFO: Step 2/6: Generate module codes
+[2026-03-23 12:09:02,827 - main.py, line:194] - INFO: Step 3/6: Audit + repair each module
+[2026-03-23 12:24:58,638 - main.py, line:246] - INFO: Step 4/6: Assemble repaired modules
+[2026-03-23 12:25:08,783 - main.py, line:253] - INFO: Step 5/6: Final audit
+[2026-03-23 12:26:13,574 - main.py, line:264] - INFO: Step 6/6: Final repair
+[2026-03-23 12:26:14,322 - main.py, line:302] - INFO: Done. prediction_image=output/prediction.png prediction_html=output/prediction.html

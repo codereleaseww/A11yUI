@@ -1,0 +1,82 @@
+{
+  "summary": {
+    "tools_received": {
+      "axe": true,
+      "lighthouse": true,
+      "pa11y": true
+    },
+    "total_merged_issues": 3,
+    "by_severity": {
+      "critical": 0,
+      "serious": 2,
+      "moderate": 1,
+      "minor": 0,
+      "unknown": 0
+    }
+  },
+  "merged_issues": [
+    {
+      "issue_id": "a11y-document-title-missing-html",
+      "title": "Missing or empty document title",
+      "description": "The page does not include a non-empty <title> element in the document <head>. A descriptive title helps screen reader users understand the page context and improves navigation (e.g., between tabs/windows) and discoverability.",
+      "severity": "serious",
+      "selectors": [
+        "html",
+        "html > head"
+      ],
+      "wcag": [
+        "WCAG 2.4.2"
+      ],
+      "source_tools": [
+        "axe",
+        "lighthouse",
+        "pa11y"
+      ],
+      "source_rule_ids": [
+        "axe:document-title",
+        "lighthouse:document-title",
+        "pa11y:WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl"
+      ],
+      "recommended_fix": "Add a meaningful, non-empty <title> in the <head>, e.g. <head><title>Page name – Site name</title>...</head>, and ensure it updates appropriately for each unique page/view."
+    },
+    {
+      "issue_id": "a11y-main-landmark-missing-html",
+      "title": "Missing main landmark",
+      "description": "The document does not have a main landmark region. A single <main> landmark helps assistive technology users quickly jump to the primary content of the page.",
+      "severity": "moderate",
+      "selectors": [
+        "html"
+      ],
+      "wcag": [
+        "WCAG 1.3.1",
+        "WCAG 2.4.1"
+      ],
+      "source_tools": [
+        "lighthouse"
+      ],
+      "source_rule_ids": [
+        "lighthouse:landmark-one-main"
+      ],
+      "recommended_fix": "Wrap the primary page content in a single <main> element (or role=\"main\"), ensure there is only one main landmark per page, and keep repeated navigation outside of it."
+    },
+    {
+      "issue_id": "a11y-bypass-blocks-incomplete-html",
+      "title": "Bypass blocks mechanism not detected (needs review)",
+      "description": "Automated checks could not confirm a mechanism to bypass repeated content (e.g., a skip link), and also indicated missing structural navigation aids (heading and/or landmark region). Users who rely on keyboards or assistive tech may have to tab through repeated navigation on every page.",
+      "severity": "serious",
+      "selectors": [
+        "html"
+      ],
+      "wcag": [
+        "WCAG 2.4.1"
+      ],
+      "source_tools": [
+        "axe"
+      ],
+      "source_rule_ids": [
+        "axe:bypass"
+      ],
+      "recommended_fix": "Provide at least one bypass mechanism such as a visible-on-focus \"Skip to main content\" link targeting the main content container (e.g., <a href=\"#main\" class=\"skip-link\">Skip to main content</a> and <main id=\"main\">...), and ensure the page has clear headings and landmark regions (header/nav/main/footer) to support navigation."
+    }
+  ]
+}

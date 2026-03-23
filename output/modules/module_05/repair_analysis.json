@@ -1,0 +1,27 @@
+{
+  "input_html": "output/modules/module_05/module_original.html",
+  "input_report": "output/modules/module_05/audit_before/merged_accessibility_report.json",
+  "report_type": "unknown",
+  "output_html": "output/modules/module_05/module_repaired.html",
+  "analysis": {
+    "violation_count": 2,
+    "key_issues": [
+      "Missing/empty document <title> element (WCAG 2.4.2)",
+      "No main landmark for primary content (WCAG 1.3.1)"
+    ],
+    "fix_strategy": [
+      "Add a meaningful, non-empty <title> in <head>",
+      "Wrap the primary content in a single semantic <main> landmark"
+    ]
+  },
+  "changes": [
+    {
+      "issue_id": "a11y-document-title-missing-html",
+      "what_changed": "Added a descriptive <title> element to the document head."
+    },
+    {
+      "issue_id": "a11y-landmark-one-main-missing-html",
+      "what_changed": "Wrapped the schedule content in a single <main> element to provide a main landmark."
+    }
+  ]
+}

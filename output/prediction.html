@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UIST 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: #f6f7f8;
+      color: #1b1b1b;
+    }
+
+    :root{
+      --gold:#b88633;
+      --gold-dark:#9a6f2b;
+      --teal:#1d8796;
+      --text:#1b1b1b;
+      --muted:#626b73;
+      --line:#e7e7e7;
+      --soft:#f8f8f8;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+      background: #f8f8f8;
+    }
+
+    /* Top bar */
+    .topbar {
+      height: 60px;
+      background: #d8e2ec;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .menu-btn {
+      position: absolute;
+      top: 12px;
+      right: 24px;
+      width: 46px;
+      height: 34px;
+      border: 1px solid rgba(0,0,0,0.18);
+      border-radius: 7px;
+      background: rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      margin: 2.5px 0;
+      background: #5a6066;
+      border-radius: 2px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 560px;
+      background: #dce6ef;
+      overflow: hidden;
+    }
+
+    .hero img.hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(0.9);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(214,226,239,0.18) 0%, rgba(255,255,255,0.58) 58%, rgba(255,255,255,0.84) 100%),
+        radial-gradient(circle at 50% 36%, rgba(255,255,255,0.04), rgba(255,255,255,0.36) 42%, rgba(255,255,255,0.72) 82%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 180px 24px 38px;
+    }
+
+    .hero-logo {
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .hero-logo img {
+      width: min(360px, 68vw);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 16px;
+      color: #3b3b3b;
+    }
+
+    .meta-link {
+      text-decoration: underline;
+      text-decoration-color: #2e8a98;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .replay {
+      position: absolute;
+      right: 18px;
+      top: 305px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(70,70,70,.82);
+      color: #fff;
+      padding: 9px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      line-height: 1;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.14);
+    }
+
+    .replay i {
+      font-size: 12px;
+      opacity: 0.95;
+    }
+
+    /* Announcement */
+    .announcements-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: -6px auto 0;
+      padding: 0 18px 40px;
+    }
+
+    .ann-card {
+      background: rgba(255,255,255,0.76);
+      border: 1px solid #e5e1dc;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+    }
+
+    .ann-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-dark);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      padding: 14px 18px 12px;
+      text-transform: uppercase;
+    }
+
+    .ann-divider {
+      height: 1px;
+      background: #ece8e2;
+      margin: 0 18px;
+    }
+
+    .ann-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 18px 18px;
+    }
+
+    .ann-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .ann-left .arrow {
+      color: var(--teal);
+      font-size: 9px;
+      padding-top: 5px;
+      flex: 0 0 auto;
+    }
+
+    .ann-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #141414;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .ann-desc {
+      font-size: 12px;
+      color: #727980;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 360px;
+    }
+
+    .ann-date {
+      color: #7b8187;
+      font-size: 11px;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    /* Main content */
+    .content {
+      background: #ffffff;
+      padding: 22px 0 0;
+    }
+
+    .content-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 52px;
+    }
+
+    .lead,
+    .sublead {
+      max-width: 1060px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: #252525;
+      margin: 0 0 26px;
+    }
+
+    .lead strong {
+      color: var(--gold-dark);
+      font-weight: 800;
+    }
+
+    .divider-gold {
+      margin: 58px 0 28px;
+      height: 2px;
+      width: 100%;
+      background: #bc8a36;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", Georgia, serif;
+      color: var(--gold-dark);
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 14px;
+    }
+
+    .dates {
+      max-width: 100%;
+      margin-bottom: 42px;
+    }
+
+    .dates-group {
+      margin-bottom: 22px;
+    }
+
+    .dates-group-title {
+      color: var(--gold-dark);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin: 0 0 2px;
+    }
+
+    .date-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .date-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .date-label {
+      color: #717981;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .date-label small {
+      font-size: 11px;
+      color: #7c838a;
+    }
+
+    .date-value {
+      font-size: 14px;
+      font-weight: 800;
+      color: #101010;
+      white-space: nowrap;
+    }
+
+    .cta-row {
+      margin-top: 14px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #9b6d24;
+      border: 1px solid #caa365;
+      border-radius: 4px;
+      padding: 8px 12px;
+      background: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .spacer-large {
+      height: 120px;
+    }
+
+    /* Sponsors card */
+    .sponsors-section {
+      background: #ffffff;
+      padding: 0 36px 24px;
+    }
+
+    .sponsors-card {
+      max-width: 1180px;
+      margin: 0 auto;
+      border: 1px solid #ece9e5;
+      border-radius: 14px;
+      background: #fff;
+      padding: 30px 28px 24px;
+    }
+
+    .sponsors-title {
+      text-align: center;
+      color: var(--gold);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .sponsors-accent {
+      width: 44px;
+      height: 3px;
+      background: var(--gold);
+      margin: 10px auto 18px;
+      border-radius: 2px;
+    }
+
+    .tier-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--gold-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+
+    .tier-line {
+      height: 1px;
+      width: 120px;
+      background: #e8dcc5;
+    }
+
+    .tier-gem {
+      font-size: 8px;
+      transform: translateY(-1px);
+    }
+
+    .logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 70px;
+      flex-wrap: wrap;
+      padding-bottom: 28px;
+    }
+
+    .logos img {
+      display: block;
+      height: 50px;
+      width: auto;
+    }
+
+    .sponsors-divider {
+      height: 1px;
+      background: #eeeeee;
+      margin: 0 0 18px;
+    }
+
+    .sponsors-cta {
+      text-align: center;
+      color: #6c737a;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .sponsors-cta strong {
+      color: #161616;
+    }
+
+    .sponsors-cta a {
+      color: #1d8796;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .sponsors-cta .ext {
+      font-size: 11px;
+      margin-left: 2px;
+      vertical-align: middle;
+    }
+
+    /* Footer */
+    .footer {
+      background: #ffffff;
+      padding: 8px 24px 34px;
+    }
+
+    .footer p {
+      max-width: 1180px;
+      margin: 0 auto;
+      text-align: center;
+      color: #7a8087;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .footer a {
+      color: #7a8087;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    @media (max-width: 760px) {
+      .hero { min-height: 500px; }
+      .hero-inner { padding-top: 160px; }
+      .replay { top: 290px; }
+      .content-inner { padding: 0 20px; }
+      .lead, .sublead { font-size: 16px; }
+      .section-title { font-size: 24px; }
+      .ann-desc { max-width: 220px; }
+      .date-row { align-items: flex-start; }
+      .logos { gap: 26px; }
+      .tier-line { width: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <button class="menu-btn" aria-label="Open menu">
+        <div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </header>
+
+    <section class="hero">
+      <img
+        class="hero-bg"
+        src="https://placehold.co/1600x900/png?text=Detroit+skyline"
+        alt="Panoramic Detroit skyline viewed from the riverfront with high-rise buildings, soft haze, blue sky, and waterfront architecture in the distance."
+      />
+
+      <div class="hero-inner">
+        <div class="hero-logo">
+          <img
+            src="https://placehold.co/900x320/png?text=UIST+2026+Logo"
+            alt="Gold conference logo with a stylized sunburst over the text UIST 2026."
+          />
+        </div>
+
+        <div class="meta-row">
+          <span>November 2-5, 2026</span>
+          <span>·</span>
+          <span>Detroit, MI USA</span>
+          <span>·</span>
+          <a href="#" class="meta-link">Renaissance Center</a>
+        </div>
+      </div>
+
+      <div class="replay">
+        <i class="fas fa-redo-alt" aria-hidden="true"></i>
+        <span>Replay video</span>
+      </div>
+
+      <div class="announcements-wrap">
+        <div class="ann-card">
+          <div class="ann-head">
+            <i class="fas fa-bullhorn" aria-hidden="true"></i>
+            <span>Announcements</span>
+          </div>
+          <div class="ann-divider"></div>
+          <div class="ann-item">
+            <div class="ann-left">
+              <span class="arrow">▶</span>
+              <div>
+                <div class="ann-title">Page Limit Reintroduced for UIST 2026 Papers</div>
+                <div class="ann-desc">This year we have decided to reintroduce a fixed page limit for papers. T...</div>
+              </div>
+            </div>
+            <div class="ann-date">February 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <div class="content-inner">
+        <p class="lead">
+          The <strong>ACM Symposium on User Interface Software and Technology (UIST)</strong> is the
+          premier forum for innovations in human-computer interfaces. Sponsored by ACM SIGCHI and
+          SIGGRAPH, UIST brings together people from diverse areas including graphical &amp; web user
+          interfaces, tangible &amp; ubiquitous computing, virtual &amp; augmented reality, multimedia,
+          new input &amp; output devices, human-centered AI, and CSCW.
+        </p>
+
+        <p class="sublead">
+          The intimate size and intensive program make UIST an ideal opportunity to exchange
+          research results and ideas.
+        </p>
+
+        <div class="divider-gold"></div>
+
+        <h2 class="section-title">Important Dates</h2>
+
+        <section class="dates">
+          <div class="dates-group">
+            <div class="dates-group-title">Full Papers</div>
+
+            <div class="date-row">
+              <div class="date-label">Abstract</div>
+              <div class="date-value">Mar 24, 2026</div>
+            </div>
+
+            <div class="date-row">
+              <div class="date-label">Paper PDF <small>(max 10pp + refs)</small></div>
+              <div class="date-value">Mar 31, 2026</div>
+            </div>
+
+            <div class="date-row">
+              <div class="date-label">Paper materials</div>
+              <div class="date-value">Apr 9, 2026</div>
+            </div>
+
+            <div class="date-row">
+              <div class="date-label">Conditional acceptance</div>
+              <div class="date-value">Jun 27, 2026</div>
+            </div>
+          </div>
+
+          <div class="dates-group">
+            <div class="dates-group-title">Posters, Demos &amp; Doctoral Symposium</div>
+
+            <div class="date-row">
+              <div class="date-label">Submission deadline</div>
+              <div class="date-value">Jul 10, 2026</div>
+            </div>
+
+            <div class="date-row">
+              <div class="date-label">Acceptance notification</div>
+              <div class="date-value">Aug 14, 2026</div>
+            </div>
+          </div>
+
+          <div class="dates-group">
+            <div class="dates-group-title">Workshops</div>
+
+            <div class="date-row">
+              <div class="date-label">Submission deadline</div>
+              <div class="date-value">Jul 10, 2026</div>
+            </div>
+
+            <div class="date-row">
+              <div class="date-label">Acceptance notification</div>
+              <div class="date-value">TBA</div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a href="#" class="cta-button">
+              <span>Full Call for Participation</span>
+              <span>→</span>
+            </a>
+          </div>
+        </section>
+
+        <div class="spacer-large"></div>
+      </div>
+
+      <section class="sponsors-section">
+        <div class="sponsors-card">
+          <h2 class="sponsors-title">Our Sponsors</h2>
+          <div class="sponsors-accent"></div>
+
+          <div class="tier-row">
+            <div class="tier-line"></div>
+            <span class="tier-gem">◆</span>
+            <span>Gold</span>
+            <div class="tier-line"></div>
+          </div>
+
+          <div class="logos">
+            <img
+              src="https://placehold.co/320x110/png?text=Adobe"
+              alt="Adobe sponsor logo in red with the Adobe mark and wordmark on a white background."
+            />
+            <img
+              src="https://placehold.co/380x110/png?text=AUTODESK"
+              alt="Autodesk sponsor logo in black with geometric icon and uppercase wordmark on a white background."
+            />
+          </div>
+
+          <div class="sponsors-divider"></div>
+
+          <div class="sponsors-cta">
+            <strong>Interested in sponsoring UIST 2026?</strong>
+            Check our
+            <a href="#">Sponsor page <span class="ext"><i class="fas fa-external-link-alt"></i></span></a>
+            or contact
+            <a href="#">sponsorship2026@uist.org <span class="ext"><i class="fas fa-external-link-alt"></i></span></a>.
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>
+          © 2026 ACM SIGCHI. Logo/iconography designed by
+          <a href="#">Shuhong Wang</a>. Detroit photography from
+          <a href="#">Visit Detroit</a>. Please contact
+          <a href="#">web chairs</a> if you have any questions or suggestions about the website.
+        </p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

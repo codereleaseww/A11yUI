@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Dates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{background:#ffffff;}
+        .important-dates-wrap{
+            width:100%;
+            background:#fff;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        }
+        .important-dates-inner{
+            width:100%;
+            padding:34px 0 0 0;
+        }
+        .important-title{
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-weight:700;
+            color:#9a6f2b;
+            font-size:64px;
+            line-height:1.05;
+            letter-spacing:0.2px;
+            margin-left:92px;
+        }
+        .section{
+            margin-top:34px;
+            margin-left:92px;
+            margin-right:64px;
+        }
+        .section-label{
+            color:#9a6f2b;
+            font-weight:700;
+            letter-spacing:2.2px;
+            font-size:22px;
+            text-transform:uppercase;
+            margin-bottom:10px;
+        }
+        .rule{
+            height:2px;
+            background:#efefef;
+            width:100%;
+        }
+        .rows{
+            width:100%;
+        }
+        .row{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:16px 0;
+            border-bottom:2px solid #efefef;
+        }
+        .left{
+            color:#6b7280;
+            font-size:30px;
+            font-weight:500;
+        }
+        .left small{
+            font-size:22px;
+            color:#6b7280;
+            font-weight:500;
+        }
+        .right{
+            color:#000;
+            font-size:30px;
+            font-weight:800;
+            letter-spacing:0.2px;
+        }
+
+        @media (max-width: 900px){
+            .important-title{font-size:48px;margin-left:24px;}
+            .section{margin-left:24px;margin-right:24px;}
+            .left,.right{font-size:22px;}
+            .left small{font-size:16px;}
+        }
+    </style>
+</head>
+<body>
+    <main class="important-dates-wrap">
+        <div class="important-dates-inner">
+            <div class="important-title">Important Dates</div>
+
+            <div class="section">
+                <div class="section-label">FULL PAPERS</div>
+                <div class="rule"></div>
+
+                <div class="rows">
+                    <div class="row">
+                        <div class="left">Abstract</div>
+                        <div class="right">Mar 24, 2026</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="left">Paper PDF <small>(max 10pp + refs)</small></div>
+                        <div class="right">Mar 31, 2026</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="left">Paper materials</div>
+                        <div class="right">Apr 9, 2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
